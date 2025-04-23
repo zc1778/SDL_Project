@@ -1,0 +1,1 @@
+void moveRect(SDL_FRect *rect, float speed);
