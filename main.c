@@ -25,14 +25,15 @@ int main(int argc, char* argv[]) {
             }
         }
 
-        //rect.x = rect.x + 0.001;
-        moveRect(&rect, 0.001);
+        Uint64 current_time = SDL_GetTicks() * 1000;
+        moveRect(&rect, 0.0001, 'y', &current_time);
+        moveRect(&rect, 0.0001, 'x', &current_time);
+
+        //Render frame redrawing
         SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
         SDL_RenderClear(renderer);
-
         SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
         SDL_RenderRect(renderer, &rect);
-
         SDL_RenderPresent(renderer);
 
     }

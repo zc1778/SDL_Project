@@ -1,1 +1,1 @@
-void moveRect(SDL_FRect *rect, float speed);
+void moveRect(SDL_FRect *rect, float speed, char dimension, Uint64 *current_time);
