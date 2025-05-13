@@ -16,26 +16,19 @@ int main(int argc, char* argv[]) {
     renderer = SDL_CreateRenderer(window, NULL);
     SDL_FRect rect = {0, 0, 100, 100};
 
-    // Main window loop
+    // Main window loop & events
     while(!done) {
         SDL_Event event;
         while(SDL_PollEvent(&event)) {
             if (event.type == SDL_EVENT_QUIT) {
                 done = true;
             }
+            if (event.type == SDL_EVENT_MOUSE_BUTTON_DOWN) {
+                rect.x = rect.x + 20;
+                rectFrame(renderer, &rect);
+            }
         }
-
         Uint64 current_time = SDL_GetTicks() * 1000;
-        moveRect(&rect, 0.0001, 'y', &current_time);
-        moveRect(&rect, 0.0001, 'x', &current_time);
-
-        //Render frame redrawing
-        SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
-        SDL_RenderClear(renderer);
-        SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
-        SDL_RenderRect(renderer, &rect);
-        SDL_RenderPresent(renderer);
-
     }
 
     // Clean program exit
